@@ -8,6 +8,9 @@ public class App {
 
     public static void main(String[] args) {
 
+        int[] ansArr = new int[10]; // 연산결과 10개 저장할 수 있는 배열 생성
+        int count =0 ; //index 변수
+
         while(true) { // 무한으로 계산 진행
             Scanner sc = new Scanner(System.in);
 
@@ -43,7 +46,11 @@ public class App {
 
             }
             System.out.println("결과 " + result);
-
+            if (count < 10) {   //연산 결과 10개 저장
+                ansArr[count] = result;
+                count++;
+            }
+            System.out.println(Arrays.toString(ansArr));
             System.out.println("더 계산하시겠습니까?(exit 입력시 종료)");
             String exitAns = sc.next();
             if (exitAns.equals("exit")) {   //exit 입력받으면 while문 종료
