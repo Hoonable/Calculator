@@ -2,6 +2,7 @@ package Level_1.main.java.calculator;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
 
 
 public class App {
@@ -54,7 +55,17 @@ public class App {
             if (removeAns.equals("remove")) {   //remove 입력 받으면 가장 먼저 저장된 결과 삭제
                 ansList.remove(0);
             }
-            System.out.println(ansList);
+
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inqAns = sc.next();
+            if (inqAns.equals("inquiry")) {  // inquiry 입력시 list 출력
+                for (int x : ansList){
+                    System.out.println(x);
+                }
+            }
+
+
 
             System.out.println("더 계산하시겠습니까?(exit 입력시 종료)");
             String exitAns = sc.next();
