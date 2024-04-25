@@ -8,8 +8,8 @@ public class App {
 
     public static void main(String[] args) {
 
-        int[] ansArr = new int[10]; // 연산결과 10개 저장할 수 있는 배열 생성
-        int count =0 ; //index 변수
+        List <Integer> ansList = new ArrayList<>();
+
 
         while(true) { // 무한으로 계산 진행
             Scanner sc = new Scanner(System.in);
@@ -46,20 +46,16 @@ public class App {
 
             }
             System.out.println("결과 " + result);
-            if (count < 10) {   //연산 결과 10개 저장
-                ansArr[count] = result;
-                count++;
-            }else{
 
-                for (int i = 0; i < 9; i++) {   //결과 값을 한칸씩 앞으로 이동
-                    ansArr[i] = ansArr[i+1];
-                }
-                ansArr[9] = result;             // 마지막 인덱스에 연산 결과 저장
+            ansList.add(result); // 리스트에 연산결과 추가
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String removeAns = sc.next();
+            if (removeAns.equals("remove")) {   //remove 입력 받으면 가장 먼저 저장된 결과 삭제
+                ansList.remove(0);
             }
+            System.out.println(ansList);
 
-
-
-            System.out.println(Arrays.toString(ansArr));
             System.out.println("더 계산하시겠습니까?(exit 입력시 종료)");
             String exitAns = sc.next();
             if (exitAns.equals("exit")) {   //exit 입력받으면 while문 종료
