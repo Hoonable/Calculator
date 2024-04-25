@@ -49,7 +49,16 @@ public class App {
             if (count < 10) {   //연산 결과 10개 저장
                 ansArr[count] = result;
                 count++;
+            }else{
+
+                for (int i = 0; i < 9; i++) {   //결과 값을 한칸씩 앞으로 이동
+                    ansArr[i] = ansArr[i+1];
+                }
+                ansArr[9] = result;             // 마지막 인덱스에 연산 결과 저장
             }
+
+
+
             System.out.println(Arrays.toString(ansArr));
             System.out.println("더 계산하시겠습니까?(exit 입력시 종료)");
             String exitAns = sc.next();
