@@ -8,10 +8,10 @@ import java.util.*;
 
 public class Calculator{
 
-    private List <Integer> ans_list = new ArrayList<>();
+    protected List <Integer> ans_list = new ArrayList<>(); // private이면 외부 클래스에서 접근 불가
     static final double PI = 3.141592; // 불변의 고정된 값
 
-    private List <Double> size_list; // 원 넓이 결과 저장 list
+    protected List <Double> size_list; // 원 넓이 결과 저장 list // private이면 외부 클래스에서 접근 불가
 
 
     public Calculator(){    // 인스턴스 생성할 때 연산 결과 리스트 초기화
@@ -20,6 +20,11 @@ public class Calculator{
         size_list = new ArrayList<>(); //초기화?
 
     }
+
+
+}
+
+class ArithmeticCalculator extends Calculator{
     public int calcutlate(int intNum1, int intNum2, char operator) throws Exception{
         int result = 0;
         switch (operator) {  // operator에 따라 다른 연산
@@ -44,7 +49,7 @@ public class Calculator{
                 throw new BadInputException_O(operator);//연산자 기호가 잘 못 들어온 경우 Exception
 
         }
-        ans_list.add(result);
+        super.ans_list.add(result);
         return result;
 
     }
@@ -68,39 +73,36 @@ public class Calculator{
         ans_list.remove(0);
     }
     public void inquiryResults() {
-      // inquiry 입력시 list 출력
+        // inquiry 입력시 list 출력
         for (int x : ans_list){
             System.out.println(x);
         }
 
     }
+}
 
-
+class CircleCalculator extends Calculator{
     public double calculateCircleArea(int r){
         double ans = r*r*PI;
-        size_list.add(ans);
+        super.size_list.add(ans);
         return ans;
     }
     public double getSizeArr(int x){ // size리스트 간접 접근 get
 
-        if(!size_list.isEmpty()){
-            return size_list.get(x);}
+        if(!super.size_list.isEmpty()){
+            return super.size_list.get(x);}
         else{
             return 0;
         }
     }
     public void inquirySizeResults() {
         // inquiry 입력시 list 출력
-        for (double x : size_list){
+        for (double x : super.size_list){
             System.out.println(x);
         }
 
     }
-
-
-
 }
-
 
 
 

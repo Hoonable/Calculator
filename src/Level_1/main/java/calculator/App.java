@@ -10,7 +10,8 @@ public class App {
     public static void main(String[] args) {
 
         List <Integer> ansList = new ArrayList<>();
-        Calculator calculator = new Calculator(); // while문 안에서 생성하면 계속 리셋됨
+        ArithmeticCalculator calculator1 = new ArithmeticCalculator();
+        CircleCalculator calculator2 = new CircleCalculator();
 
         while(true) { // 무한으로 계산 진행
 
@@ -34,36 +35,36 @@ public class App {
                 int result = 0;
 
                 try {
-                    result = calculator.calcutlate(num1, num2, operator);
+                    result = calculator1.calcutlate(num1, num2, operator);
                 } catch (Exception e) {   //예외처리
                     System.out.println(e.getMessage());
                 }
 
                 System.out.println("결과 " + result);
 
-                System.out.println("Calculator 내부 List 첫번째 데이터 조회 :" + calculator.getArr(0));
+                System.out.println("Calculator 내부 List 첫번째 데이터 조회 :" + calculator1.getArr(0));
                 System.out.println("List에 가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 String removeAns_L = sc.next();
                 if (removeAns_L.equals("remove")) {   //remove 입력 받으면 list에 가장 먼저 저장된 결과 삭제
-                    calculator.removeResult();
+                    calculator1.removeResult();
                 }
                 System.out.println("List에 저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String inqAns = sc.next();
                 if (inqAns.equals("inquiry")) {
-                    calculator.inquiryResults();
+                    calculator1.inquiryResults();
                 }
             }
             else if( typeCheck == 2){
                 double r_size;
                 System.out.print("반지름 길이를 입력하세요: ");
                 int r = sc.nextInt();
-                r_size = calculator.calculateCircleArea(r);
+                r_size = calculator2.calculateCircleArea(r);
                 System.out.println("원의 크기 : " + r_size);
 
                 System.out.println("List에 저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String inqAns = sc.next();
                 if (inqAns.equals("inquiry")) {
-                    calculator.inquirySizeResults();
+                    calculator2.inquirySizeResults();
                 }
 
             }
