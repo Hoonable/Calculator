@@ -18,6 +18,8 @@ public class Calculator{
     MultiplyOperator multiplyOperator;
     SubtractOperator subtractOperator;
 
+    ModOperator modOperator;
+
     public Calculator(){    // 인스턴스 생성할 때 연산 결과 리스트 초기화
         ans_list.clear();
 
@@ -27,6 +29,7 @@ public class Calculator{
         this.divideOperator = new DivideOperator();
         this.multiplyOperator = new MultiplyOperator();
         this.subtractOperator = new SubtractOperator();
+        this.modOperator = new ModOperator();
 
 
 
@@ -35,6 +38,11 @@ public class Calculator{
 
 }
 
+class ModOperator{
+    public int operate(int a, int b){
+        return a%b;
+    }
+}
 class AddOperator{
 
     public int operate(int a, int b){
@@ -81,6 +89,9 @@ class ArithmeticCalculator extends Calculator{
                 } else {
                     result = divideOperator.operate(intNum1, intNum2);
                 }
+                break;
+            case '%':
+                result = modOperator.operate(intNum1, intNum2);
                 break;
             default:
                 System.out.println();
