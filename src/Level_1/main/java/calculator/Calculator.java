@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Calculator{
 
-    List <Integer> ans_list = new ArrayList<>();
+    private List <Integer> ans_list = new ArrayList<>();
 
     public Calculator(){
     }
@@ -38,6 +38,21 @@ public class Calculator{
         ans_list.add(result);
         return result;
 
+    }
+    public int getArr(int x){ // 리스트 간접 접근 get
+
+        if(!ans_list.isEmpty()){
+            return ans_list.get(x);}
+        else{
+            return 0;
+        }
+    }
+    public void setArr(int idx, int num){// 리스트 간접 접근 set
+        ans_list.set(idx,num);
+    }
+
+    public void addArr(int num){// 리스트 간접 접근 add
+        ans_list.add(num);
     }
 
 

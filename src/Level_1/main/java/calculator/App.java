@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) {
 
         List <Integer> ansList = new ArrayList<>();
-
+        Calculator calculator = new Calculator(); // while문 안에서 생성하면 계속 리셋됨
 
         while(true) { // 무한으로 계산 진행
             Scanner sc = new Scanner(System.in);
@@ -26,16 +26,16 @@ public class App {
             char operator = sc.next().charAt(0);
 
             int result = 0;
-            Calculator calculator = new Calculator();
+            
             try {
                 result = calculator.calcutlate(num1, num2, operator);
             } catch(Exception e){   //예외처리
                 System.out.println(e.getMessage());
             }
 
-
-
             System.out.println("결과 " + result);
+
+            System.out.println("Calculator 내부 List 첫번째 데이터 조회 :"+calculator.getArr(0));
 
             ansList.add(result); // 리스트에 연산결과 추가
 
