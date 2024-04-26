@@ -58,7 +58,13 @@ public class Calculator{
     public void removeResult(){ //리스트 index 0 삭제
         ans_list.remove(0);
     }
+    public void inquiryResults() {
+      // inquiry 입력시 list 출력
+        for (int x : ans_list){
+            System.out.println(x);
+        }
 
+    }
 
 }
 

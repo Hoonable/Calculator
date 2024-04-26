@@ -41,26 +41,11 @@ public class App {
             if (removeAns_L.equals("remove")) {   //remove 입력 받으면 list에 가장 먼저 저장된 결과 삭제
                 calculator.removeResult();
             }
-
-
-
-            ansList.add(result); // 리스트에 연산결과 추가
-
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-            String removeAns = sc.next();
-            if (removeAns.equals("remove")) {   //remove 입력 받으면 가장 먼저 저장된 결과 삭제
-                ansList.remove(0);
-            }
-
-
-            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            System.out.println("List에 저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inqAns = sc.next();
-            if (inqAns.equals("inquiry")) {  // inquiry 입력시 list 출력
-                for (int x : ansList){
-                    System.out.println(x);
-                }
+            if (inqAns.equals("inquiry")) {
+                calculator.inquiryResults();
             }
-
 
 
             System.out.println("더 계산하시겠습니까?(exit 입력시 종료)");
