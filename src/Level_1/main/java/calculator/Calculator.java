@@ -9,7 +9,9 @@ public class Calculator{
 
     private List <Integer> ans_list = new ArrayList<>();
 
-    public Calculator(){
+    public Calculator(){    // 인스턴스 생성할 때 연산 결과 리스트 초기화
+        ans_list.clear();
+
     }
     public int calcutlate(int intNum1, int intNum2, char operator) throws Exception{
         int result = 0;
