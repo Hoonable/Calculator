@@ -36,6 +36,13 @@ public class App {
             System.out.println("결과 " + result);
 
             System.out.println("Calculator 내부 List 첫번째 데이터 조회 :"+calculator.getArr(0));
+            System.out.println("List에 가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String removeAns_L = sc.next();
+            if (removeAns_L.equals("remove")) {   //remove 입력 받으면 list에 가장 먼저 저장된 결과 삭제
+                calculator.removeResult();
+            }
+
+
 
             ansList.add(result); // 리스트에 연산결과 추가
 

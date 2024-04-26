@@ -55,6 +55,9 @@ public class Calculator{
         ans_list.add(num);
     }
 
+    public void removeResult(){ //리스트 index 0 삭제
+        ans_list.remove(0);
+    }
 
 
 }
