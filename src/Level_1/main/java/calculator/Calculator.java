@@ -13,14 +13,52 @@ public class Calculator{
 
     protected List <Double> size_list; // 원 넓이 결과 저장 list // private이면 외부 클래스에서 접근 불가
 
+    AddOperator addOperator; //사칙연산자 객체  선언
+    DivideOperator divideOperator;
+    MultiplyOperator multiplyOperator;
+    SubtractOperator subtractOperator;
 
     public Calculator(){    // 인스턴스 생성할 때 연산 결과 리스트 초기화
         ans_list.clear();
 
         size_list = new ArrayList<>(); //초기화?
 
+        this.addOperator = new AddOperator(); // 사칙연산자 클래스 초기화
+        this.divideOperator = new DivideOperator();
+        this.multiplyOperator = new MultiplyOperator();
+        this.subtractOperator = new SubtractOperator();
+
+
+
     }
 
+
+}
+
+class AddOperator{
+
+    public int operate(int a, int b){
+        return a+b;
+    }
+}
+
+class SubtractOperator{
+    public int operate(int a, int b){
+        return a-b;
+    }
+
+}
+
+class MultiplyOperator{
+    public int operate(int a, int b){
+        return a*b;
+    }
+
+}
+class DivideOperator{
+    public int operate(int a, int b){
+        return a/b;
+    }
 
 }
 
@@ -29,19 +67,19 @@ class ArithmeticCalculator extends Calculator{
         int result = 0;
         switch (operator) {  // operator에 따라 다른 연산
             case '+':
-                result = intNum1 + intNum2;
+                result = addOperator.operate(intNum1, intNum2);
                 break;
             case '-':
-                result = intNum1 - intNum2;
+                result = subtractOperator.operate(intNum1, intNum2);
                 break;
             case '*':
-                result = intNum1 * intNum2;
+                result = multiplyOperator.operate(intNum1,intNum2);
                 break;
             case '/':
                 if (intNum2 == 0) {
                     throw new BadInputException_D();    //나눗셈 분모 0들어오면 Exception
                 } else {
-                    result = intNum1 / intNum2;
+                    result = divideOperator.operate(intNum1, intNum2);
                 }
                 break;
             default:
