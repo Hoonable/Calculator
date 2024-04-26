@@ -24,28 +24,17 @@ public class App {
 
 //        charAt(idx) : charAt메서드는 매개변수로 char 타입으로 반환 하고자하는 문자열의 위치(index)를 받는다.
             char operator = sc.next().charAt(0);
-            int result = 0;
-            switch (operator) {  // operator에 따라 다른 연산
-                case '+':
-                    result = num1 + num2;
-                    break;
-                case '-':
-                    result = num1 - num2;
-                    break;
-                case '*':
-                    result = num1 * num2;
-                    break;
-                case '/':
-                    if (num2 == 0) {
-                        System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                    } else {
-                        result = num1 / num2;
-                    }
-                    break;
-                default:
-                    System.out.println("연산자가 잘못 입력되었습니다.");
 
+            int result = 0;
+            Calculator calculator = new Calculator();
+            try {
+                result = calculator.calcutlate(num1, num2, operator);
+            } catch(Exception e){   //예외처리
+                System.out.println(e.getMessage());
             }
+
+
+
             System.out.println("결과 " + result);
 
             ansList.add(result); // 리스트에 연산결과 추가
