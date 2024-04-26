@@ -5,12 +5,19 @@ import java.util.*;
 
 
 
+
 public class Calculator{
 
     private List <Integer> ans_list = new ArrayList<>();
+    static final double PI = 3.141592; // 불변의 고정된 값
+
+    private List <Double> size_list; // 원 넓이 결과 저장 list
+
 
     public Calculator(){    // 인스턴스 생성할 때 연산 결과 리스트 초기화
         ans_list.clear();
+
+        size_list = new ArrayList<>(); //초기화?
 
     }
     public int calcutlate(int intNum1, int intNum2, char operator) throws Exception{
@@ -67,6 +74,30 @@ public class Calculator{
         }
 
     }
+
+
+    public double calculateCircleArea(int r){
+        double ans = r*r*PI;
+        size_list.add(ans);
+        return ans;
+    }
+    public double getSizeArr(int x){ // size리스트 간접 접근 get
+
+        if(!size_list.isEmpty()){
+            return size_list.get(x);}
+        else{
+            return 0;
+        }
+    }
+    public void inquirySizeResults() {
+        // inquiry 입력시 list 출력
+        for (double x : size_list){
+            System.out.println(x);
+        }
+
+    }
+
+
 
 }
 
