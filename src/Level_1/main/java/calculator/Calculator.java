@@ -38,32 +38,41 @@ public class Calculator{
 
 }
 
-class ModOperator{
+
+interface Operator{ //인터페이스
+    int operate(int a, int b);
+}
+class ModOperator implements Operator{  //인터페이스 활용
+
+    @Override
     public int operate(int a, int b){
         return a%b;
     }
 }
-class AddOperator{
-
+class AddOperator implements Operator{
+    @Override
     public int operate(int a, int b){
         return a+b;
     }
 }
 
-class SubtractOperator{
+class SubtractOperator implements Operator{
+    @Override
     public int operate(int a, int b){
         return a-b;
     }
 
 }
 
-class MultiplyOperator{
+class MultiplyOperator implements Operator{
+    @Override
     public int operate(int a, int b){
         return a*b;
     }
 
 }
-class DivideOperator{
+class DivideOperator implements Operator{
+    @Override
     public int operate(int a, int b){
         return a/b;
     }
@@ -71,33 +80,35 @@ class DivideOperator{
 }
 
 class ArithmeticCalculator extends Calculator{
+    Operator O;
     public int calcutlate(int intNum1, int intNum2, char operator) throws Exception{
         int result = 0;
         switch (operator) {  // operator에 따라 다른 연산
             case '+':
-                result = addOperator.operate(intNum1, intNum2);
+                O = super.addOperator;  // 인터페이스 활용?
                 break;
             case '-':
-                result = subtractOperator.operate(intNum1, intNum2);
+                O = super.subtractOperator;
                 break;
             case '*':
-                result = multiplyOperator.operate(intNum1,intNum2);
+                O = super.multiplyOperator;
                 break;
             case '/':
                 if (intNum2 == 0) {
                     throw new BadInputException_D();    //나눗셈 분모 0들어오면 Exception
                 } else {
-                    result = divideOperator.operate(intNum1, intNum2);
+                    O = super.divideOperator;
                 }
                 break;
             case '%':
-                result = modOperator.operate(intNum1, intNum2);
+                O = super.modOperator;
                 break;
             default:
                 System.out.println();
                 throw new BadInputException_O(operator);//연산자 기호가 잘 못 들어온 경우 Exception
 
         }
+        result = O.operate(intNum1, intNum2);
         super.ans_list.add(result);
         return result;
 
