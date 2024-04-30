@@ -39,6 +39,41 @@ public class Calculator{
 }
 
 
+
+enum OperatorType {
+    ADD(){
+        public int OPERATE(int x, int y) {  //추상메서드 구체화
+            return x+y;
+        }
+    },
+    SUB(){
+        public int OPERATE(int x, int y) {
+            return x-y;
+        }
+    },
+    MUL(){
+        public int OPERATE(int x, int y) {
+            return x*y;
+        }
+    },
+    DIV(){
+        public int OPERATE(int x, int y) {
+            return x/y;
+        }
+    },
+    MOD(){
+        public int OPERATE(int x, int y) {
+            return x%y;
+        }
+    };
+
+    OperatorType(){
+        //System.out.println("enum");
+    }
+    public abstract int OPERATE(int x, int y);  //추상 메서드
+}
+
+
 interface Operator{ //인터페이스
     int operate(int a, int b);
 }
@@ -80,35 +115,35 @@ class DivideOperator implements Operator{
 }
 
 class ArithmeticCalculator extends Calculator{
-    Operator O;
+    OperatorType O;
     public int calcutlate(int intNum1, int intNum2, char operator) throws Exception{
         int result = 0;
         switch (operator) {  // operator에 따라 다른 연산
             case '+':
-                O = super.addOperator;  // 인터페이스 활용?
+                O = OperatorType.ADD;  // enum 상수집합의 ADD 상수 정의
                 break;
             case '-':
-                O = super.subtractOperator;
+                O = OperatorType.SUB;
                 break;
             case '*':
-                O = super.multiplyOperator;
+                O = OperatorType.MUL;
                 break;
             case '/':
                 if (intNum2 == 0) {
                     throw new BadInputException_D();    //나눗셈 분모 0들어오면 Exception
                 } else {
-                    O = super.divideOperator;
+                    O = OperatorType.DIV;
                 }
                 break;
             case '%':
-                O = super.modOperator;
+                O = OperatorType.MOD;
                 break;
             default:
                 System.out.println();
                 throw new BadInputException_O(operator);//연산자 기호가 잘 못 들어온 경우 Exception
 
         }
-        result = O.operate(intNum1, intNum2);
+        result = O.OPERATE(intNum1, intNum2);   // enum의 메소드 실행
         super.ans_list.add(result);
         return result;
 
