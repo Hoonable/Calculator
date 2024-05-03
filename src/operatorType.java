@@ -18,6 +18,7 @@ enum operatorType {
     },
     DIV('/') {
         public int OPERATE(int x, int y) {
+            if(y==0){throw new ArithmeticException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");}
             return (x / y);
         }
     };
