@@ -16,4 +16,15 @@ public class Calculator {
 
         return ans;
     }
+
+    public List<Integer> getResults() {
+        return results;
+    }
+
+
+    public void inquiryResults() {
+        for (int result : this.getResults()) {
+            System.out.println("연산 결과 = " + result);
+        }
+    }
 }
