@@ -1,6 +1,6 @@
 
 
-enum operatorType {
+enum OperatorType {
     ADD('+') {
         public int OPERATE(int x, int y) {
             return (x + y);
@@ -25,12 +25,12 @@ enum operatorType {
 
     private final char symbol;
 
-    operatorType(char symbol) {
+    OperatorType(char symbol) {
         this.symbol = symbol;
     }
 
     public static int fromOperator(int x, int y, char operator) {
-        for (operatorType type : operatorType.values()) {
+        for (OperatorType type : OperatorType.values()) {
             if (type.symbol == operator) {
                 return type.OPERATE(x, y);
             }

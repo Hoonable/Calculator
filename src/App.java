@@ -11,11 +11,11 @@ public class App {
 
         do {
             System.out.print("첫번째 숫자를 입력해주세요: ");
-            int num1 = checkNumber.checkInput1();
+            int num1 = CheckNumber.CheckInput1();
             System.out.print("두번째 숫자를 입력해주세요: ");
-            int num2 = checkNumber.checkInput1();
+            int num2 = CheckNumber.CheckInput1();
             System.out.print("연산자를 입력해주세요: ");
-            char operator = checkOperator.checkInput2();
+            char operator = CheckOperator.checkInput2();
             int ans;
 
             ans = cal.calculate(num1, num2, operator);

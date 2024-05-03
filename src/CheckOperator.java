@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class checkOperator {
+public class CheckOperator {
     public static char checkInput2() {
         Scanner sc = new Scanner(System.in);
         char O;

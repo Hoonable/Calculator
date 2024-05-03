@@ -1,10 +1,9 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class checkNumber {
+public class CheckNumber {
 
 
-    public static int checkInput1(){
+    public static int CheckInput1(){
         Scanner sc = new Scanner(System.in);
         int num;
         while(true){
