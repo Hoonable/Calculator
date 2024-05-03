@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class checkNumber {
 
 
-    public static int checkInput(){
+    public static int checkInput1(){
         Scanner sc = new Scanner(System.in);
         int num;
         while(true){
